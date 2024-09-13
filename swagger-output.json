@@ -55,7 +55,7 @@
             "description": "Cannot update past jobs"
           },
           "404": {
-            "description": "Invalid ID or job not found"
+            "description": "Invalid ID or job not found (error)"
           },
           "500": {
             "description": "Server error"
