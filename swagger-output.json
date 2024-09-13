@@ -1,0 +1,69 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Jobs API",
+    "version": "1.0.0",
+    "description": "API for managing cleaning jobs"
+  },
+  "servers": [
+    {
+      "url": "https://api.yourserver.com"
+    }
+  ],
+  "paths": {
+    "/update_job/{id}": {
+      "put": {
+        "summary": "Update a job",
+        "tags": [
+          "Jobs"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Job ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "cleaner_comment": {
+                    "type": "string"
+                  },
+                  "job_timed": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "The updated job"
+          },
+          "400": {
+            "description": "Cannot update past jobs"
+          },
+          "404": {
+            "description": "Invalid ID or job not found"
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
