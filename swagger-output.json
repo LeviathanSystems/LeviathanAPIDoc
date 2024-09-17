@@ -11,6 +11,164 @@
     }
   ],
   "paths": {
+    "/Office/crm/documents/byref/{ref_warehouse}": {
+      "get": {
+        "tags": [
+          "CRMDocuments"
+        ],
+        "summary": "Get documents by warehouse reference",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ref_warehouse",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Reference ID for the warehouse"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of documents by warehouse reference",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "created_at": {
+                        "type": "string"
+                      },
+                      "created_by": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      },
+                      "document_no": {
+                        "type": "string"
+                      },
+                      "source_warehouse_name": {
+                        "type": "string"
+                      },
+                      "destination_warehouse_name": {
+                        "type": "string"
+                      },
+                      "document_type_name": {
+                        "type": "string"
+                      },
+                      "status_name": {
+                        "type": "string"
+                      },
+                      "partner_reference": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server error"
+          }
+        }
+      }
+    },
+    "/Office/crm/documents/types": {
+      "get": {
+        "tags": [
+          "CRMDocuments"
+        ],
+        "summary": "Get document types",
+        "responses": {
+          "200": {
+            "description": "Document types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "document_name": {
+                        "type": "string"
+                      },
+                      "require_balance": {
+                        "type": "boolean"
+                      },
+                      "require_amount": {
+                        "type": "boolean"
+                      },
+                      "allow_dst": {
+                        "type": "boolean"
+                      },
+                      "allow_src": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/Office/crm/documents/type_accesses": {
+      "get": {
+        "tags": [
+          "CRMDocuments"
+        ],
+        "summary": "Get document type accesses",
+        "responses": {
+          "200": {
+            "description": "Document type access data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "source_ware": {
+                        "type": "integer"
+                      },
+                      "dst_ware": {
+                        "type": "integer"
+                      },
+                      "document_type": {
+                        "type": "integer"
+                      },
+                      "allow_create": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
     "/Office/crm/documents": {
       "get": {
         "tags": [
@@ -185,164 +343,6 @@
           },
           "500": {
             "description": "Server error"
-          }
-        }
-      }
-    },
-    "/Office/crm/documents/byref/{ref_warehouse}": {
-      "get": {
-        "tags": [
-          "CRMDocuments"
-        ],
-        "summary": "Get documents by warehouse reference",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "ref_warehouse",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Reference ID for the warehouse"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of documents by warehouse reference",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "created_at": {
-                        "type": "string"
-                      },
-                      "created_by": {
-                        "type": "string"
-                      },
-                      "status": {
-                        "type": "string"
-                      },
-                      "document_no": {
-                        "type": "string"
-                      },
-                      "source_warehouse_name": {
-                        "type": "string"
-                      },
-                      "destination_warehouse_name": {
-                        "type": "string"
-                      },
-                      "document_type_name": {
-                        "type": "string"
-                      },
-                      "status_name": {
-                        "type": "string"
-                      },
-                      "partner_reference": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Server error"
-          }
-        }
-      }
-    },
-    "/Office/crm/documents/types": {
-      "get": {
-        "tags": [
-          "CRMDocuments"
-        ],
-        "summary": "Get document types",
-        "responses": {
-          "200": {
-            "description": "Document types",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "document_name": {
-                        "type": "string"
-                      },
-                      "require_balance": {
-                        "type": "boolean"
-                      },
-                      "require_amount": {
-                        "type": "boolean"
-                      },
-                      "allow_dst": {
-                        "type": "boolean"
-                      },
-                      "allow_src": {
-                        "type": "boolean"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request"
-          }
-        }
-      }
-    },
-    "/Office/crm/documents/type_accesses": {
-      "get": {
-        "tags": [
-          "CRMDocuments"
-        ],
-        "summary": "Get document type accesses",
-        "responses": {
-          "200": {
-            "description": "Document type access data",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": "integer"
-                      },
-                      "source_ware": {
-                        "type": "integer"
-                      },
-                      "dst_ware": {
-                        "type": "integer"
-                      },
-                      "document_type": {
-                        "type": "integer"
-                      },
-                      "allow_create": {
-                        "type": "boolean"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad request"
           }
         }
       }
