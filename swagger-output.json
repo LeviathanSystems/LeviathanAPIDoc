@@ -430,7 +430,7 @@
         }
       }
     },
-    "/Webhook/NewReservation/{Connection_ID}": {
+    "/Webhook/NewReservation/{Connection_ID}?remote_id={remote_id}": {
       "post": {
         "tags": [
           "Webhook",
