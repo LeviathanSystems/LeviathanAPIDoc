@@ -464,7 +464,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Eveything is OK"
+            "description": "Everything is OK"
           },
           "400": {
             "description": "Bad Request"
